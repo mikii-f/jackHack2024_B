@@ -119,9 +119,9 @@ function getImageRotationAngle(img) {
 
 //色を黒に変更
 function Black(){
-  base.src = 'clock_base_b.jpg';
-  short.src = 'clock_short_b.jpg';
-  long.src = 'clock_long_b.jpg';
+  base.src = 'clock_base2.jpg';
+  short.src = 'clock_short2.jpg';
+  long.src = 'clock_long2.jpg';
 }
 
 //色を白に変更
