@@ -2,6 +2,7 @@ select{
     padding: 5px;
     width:50%;
     font-family: Meiryo;
+    border-color: #FF9494;
   }
 body {
     padding-top:25px;
@@ -36,6 +37,25 @@ body {
     margin-bottom: 10px; /* 入力項目同士の間隔を調整 */
 }
 
+.unit{
+    color:#333;
+}
+table{
+    display: grid;
+    margin: 0;
+    min-height: 100vh;
+    grid-template-columns: 2fx 1fx 4fr;
+}
+
+table > * {
+    margin: 3px;
+    padding: 10px;
+}
+
+.sleep{
+    grid-column: 1;
+}
+
 /* カーソルを重ねる要素 */
 .tooltip {
     position: relative; /* ツールチップの位置の基準に */
@@ -49,7 +69,7 @@ body {
     position: absolute; /* 絶対配置 */
     left: 50%; /* 親に対して中央配置 */
     transform: translateX(-50%); /* 親に対して中央配置 */
-    bottom: -30px; /* 親要素下からの位置 */
+    bottom: -200%; /* 親要素下からの位置 */
     display: inline-block;
     padding: 10px; /* 余白 */
     white-space: normal; /* テキストを折り返さない */
@@ -59,12 +79,12 @@ body {
     color: #fff; /* 文字色 */
     border-radius: 3px; /* 角丸 */
     transition: 0.3s ease-in; /* アニメーション */
-    width: 100%; /* 幅 */
+    width: 500%; /* 幅 */
   }
   
   /* ホバー時にツールチップの非表示を解除 */
   .tooltip:hover .tooltip-text {
-    opacity: 0.6;
+    opacity: 0.8;
     visibility: visible;
   }
   .head {
