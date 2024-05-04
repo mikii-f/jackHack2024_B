@@ -49,7 +49,7 @@ function LowSpeed(){
     ], 
     // タイミングに関する設定
     {
-      duration: 60000, // 再生時間（60秒）
+      duration: 24000, // 再生時間（24秒）
       iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
   );
@@ -63,7 +63,7 @@ function LowSpeed(){
     ], 
     // タイミングに関する設定
     {
-      duration: 5000, // 再生時間（5秒）
+      duration: 2000, // 再生時間（2秒）
       iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
   );
@@ -82,7 +82,7 @@ function HighSpeed(){
     ], 
     // タイミングに関する設定
     {
-      duration: 6000, // 再生時間（6秒）
+      duration: 3600, // 再生時間（6秒）
       iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
   );
@@ -96,7 +96,7 @@ function HighSpeed(){
     ], 
     // タイミングに関する設定
     {
-      duration: 500, // 再生時間（0.5秒）
+      duration: 300, // 再生時間（0.5秒）
       iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
   );
@@ -119,14 +119,35 @@ function getImageRotationAngle(img) {
 
 //色を黒に変更
 function Black(){
-  base.src = 'clock_base_b.jpg';
-  short.src = 'clock_short_b.jpg';
-  long.src = 'clock_long_b.jpg';
+  base.src = './img/clock_base_b.jpg';
+  short.src = './img/clock_short_b.jpg';
+  long.src = './img/clock_long_b.jpg';
 }
 
 //色を白に変更
 function White(){
-  base.src = 'clock_base.jpg';
-  short.src = 'clock_short.jpg';
-  long.src = 'clock_long.jpg';
+  base.src = './img/clock_base.jpg';
+  short.src = './img/clock_short.jpg';
+  long.src = './img/clock_long.jpg';
+}
+
+
+function calculateTime(time){
+  // const slow_time = (2880 - time*120)/1880
+  const fast_time_h = (20/17)*time - (100/34)
+  const fast_time = fast_time_h * 300
+  return fast_time
+}
+
+function rotateTimer(){
+  const hours = 12; //TODO: 本来はクエリパラメータから取得する
+  const fast_time = calculateTime(hours);
+  console.log(fast_time)
+  HighSpeed();
+  setTimeout(() => {
+    LowSpeed()
+  }, fast_time);
+  setTimeout(() => {
+    Stop()
+  }, 5000);
 }
