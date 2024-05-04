@@ -13,8 +13,8 @@ const buttonOpen = document.getElementById('modalOpen');
 const modal = document.getElementById('easyModal');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const sendResult = document.getElementById('sendResult');
-// 結果を見る、が押されたとき
 
+// 結果を見る、が押されたとき
 function calculate() {
     const urlSearchParams = new URLSearchParams(location.search);
 
@@ -25,6 +25,7 @@ function calculate() {
     const smoke = document.getElementById("smoke").value;
     const self_evaluation = document.getElementById("self-evaluation").value;
     
+    console.log(sleeptime)
     const result = 100; //TODO: 本来であれば、上記の値を参照して計算を行う。それはお任せします。
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
