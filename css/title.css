@@ -1,3 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding : 0;
+    background-color: #fff;
+}
 .header {
-    color: blue;
+    padding: 10px 4% 10px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #ff9494;
+    display: flex;
+    align-items: center;
+}
+#header_title {
+   margin: 0;
+   padding: 0;
+   font-size: 20px;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+}
+li {
+    margin: 0 0 0 15px;
+    font-size: 14px;
+}
+a {	
+    text-decoration: none;
+    color: #fff;
+}
+nav {
+    margin: 0 0 0 auto;
+}
+#top {
+    text-decoration: underline;
+}
+#result {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#start_consult_button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 40px;
+    width: 140px;
+    border-radius: 10px;
+    background-color: #ff9494;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main {
+    padding:0px;
 }
