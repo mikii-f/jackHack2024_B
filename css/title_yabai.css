@@ -30,6 +30,7 @@ body {
     width: 200px;
     height: 60px;
     clip-path: polygon(0px 10px, 135px 5px, 140px 40px, 15px 50px);
+    font-weight: bold;
 }
 #header_list {
     padding-top: 20px;
@@ -38,7 +39,7 @@ body {
     color: #000;
     width: 400;
     height: 60px;
-    clip-path: polygon(10px 7px, 140px 17px, 160px 47px, 0px 57px);
+    clip-path: polygon(10px 7px, 140px 17px, 148px 47px, 0px 57px);
 }
 #title_span {
     color: #fff;
@@ -84,7 +85,13 @@ nav {
     padding-top: 20px;
     padding-left: 10px;
 }
+#button_span {
+    color: #fff;
+    display: inline-block;
+    transform: translate3d(0px, -3px, 0px);
+}
 #start_consult_button {
+    font-weight: bold;
     background-color: #FF0000;
     color: #000;
 }
