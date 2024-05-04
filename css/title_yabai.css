@@ -75,7 +75,9 @@ nav {
 #doc {
     color: #fff;
 }
-#result {    
+#result {
+    position: relative;
+    top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
