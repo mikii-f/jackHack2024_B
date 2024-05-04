@@ -1,0 +1,28 @@
+.vertical_border1 {
+    border-left:5px solid #000000; /*線の設定*/
+}
+
+.font {
+    font-size: 35px;
+    color: #FF9494;
+}
+
+.discription_context1 {
+    margin: 20px;
+}
+
+.margin1{
+    margin-top: 75px;
+}
+
+.margin2 {
+    margin-top: 35px;
+}
+
+.margin_left1 {
+    margin-left: 90px;
+}
+
+.discription_margin_left{
+    margin-left: 110px;
+}
