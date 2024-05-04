@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
-* {
+body {
     background-color: white;
     color: black;
+    z-index: 0;
 }
 
 .clock_base {
@@ -21,3 +22,43 @@
     transform: rotate(0deg);
     border-radius: 50%;
 }
+
+.black_in_calc{
+	position: fixed; /* ブラウザの定位置に固定 */
+	background: rgba(0, 0, 0, 0); /* 背景色を半透明の黒色に */
+	width: 100%; /* 要素の横幅を画面全体に */
+	height: 100%; /* 要素の高さを画面全体に */
+	top: 0; /* 要素の固定位置をブラウザ最上部に合わせる */
+	left: 0; /* 要素の固定位置をブラウザ左側に合わせる */
+	z-index: -1; /* 初めはページの基本要素より後ろに配置(前に置くとUI操作ができなくなる) */
+}
+
+/*「計算中」テキスト*/
+#popup_text{
+    display: none;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    z-index: 2;
+	position: fixed;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+/*プログレスバー*/
+progress{
+    display: none;
+    z-index: 2;
+    position: fixed;
+	top: 60%;
+	left: 26%;
+	transform: translate(-50%,-50%);
+    -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar{background-color: #ffffff;}
+progress::-webkit-progress-value{background-color: #ff9494;}
+progress::-webkit-progress-bar{width: 475%;}
+progress::-webkit-progress-bar{height: 150%;}
