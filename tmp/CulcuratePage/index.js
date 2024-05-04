@@ -1,4 +1,4 @@
-document.getElementById("culcurate").onclick = function() {
+document.getElementById("calculate").onclick = function() {
     const urlSearchParams = new URLSearchParams(location.search);
     const height = document.getElementById("height").value;
     const weight = document.getElementById("weight").value;
