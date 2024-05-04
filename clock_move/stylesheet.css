@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+* {
+    background-color: white;
+    color: black;
+}
+
+.clock_base {
+    position: relative;
+    transform: rotate(0deg);
+}
+
+.clock_hands {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 5pt;
+    left: 0;
+    margin: auto;
+    mix-blend-mode: multiply;
+    transform: rotate(0deg);
+    border-radius: 50%;
+}
