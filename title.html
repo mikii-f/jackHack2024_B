@@ -10,10 +10,127 @@
 
   <body>
     <!--例:　ヘッダーを読み込ませる-->
-    <div id="header"></div>
+    <div class="header">
+      <div id="header_logo"></div>
+      <div id="header_title"><a href="#">体内終末時計</a></div>
+      <nav id="header_list">
+        <ul>
+          <li><a href="#" id="top">TOP</a></li>
+          <li><a href="#" id="doc">説明</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <main>
-      <p>内容</p>
+      <div id="result">ようこそ体内終末時計へ</div>
+      <div class="clock_base" style="text-align: center">
+        <img src="./img/clock_base.jpg" id="base" width="40%">
+        <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
+        <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
+      </div>
+      <button id="modalOpen" class="button">終末時間を計算</button>
+      <!-- <button id="modalOpen" class="button">モーダルオープン</button> -->
+      <div id="easyModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2># あなたの生活習慣を入力してください</h2>
+            <span class="modalClose">×</span>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <tr>
+                <div class="sleep">
+                  <label for="sleeptime" class="contenttitle">睡眠時間<span class="unit"> (h)</span></label>
+                    <select id="sleeptime">
+                      <option value="5">0~2</option>
+                      <option value="3">3~4</option>
+                      <option value="1">5~6</option>
+                      <option value="0" selected>7</option>
+                      <option value="2">8~9</option>
+                      <option value="5">10~</option>
+                    </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="height">
+                  <label for="height" class="contenttitle">身長<span class="unit"> (cm)</span></label>
+                  <select id="height">
+                    <option value="1.35">130~140</option>
+                    <option value="1.45">141~150</option>
+                    <option value="1.55">151~160</option>
+                    <option value="1.65">161~170</option>
+                    <option value="1.75" selected>171~180</option>
+                    <option value="1.85">181~190</option>
+                    <option value="1.95">191~200</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="weight">
+                  <label for="weight" class="contenttitle">体重<span class="unit"> (kg)</span></label>
+                  <select id="weight">
+                    <option value="35">30~40</option>
+                    <option value="45">41~50</option>
+                    <option value="55" selected>51~60</option>
+                    <option value="65">61~70</option>
+                    <option value="75">71~80</option>
+                    <option value="85">81~90</option>
+                    <option value="95">91~100</option>
+                    <option value="105">101~110</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="drink">
+                  <label for="drink" class="contenttitle">飲酒量  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">週に何回飲酒するかを選択してください</span>
+                  </span></label>
+                  <select id="drink">
+                    <option value="0">飲酒しない</option>
+                    <option value="1">週に2~4杯</option>
+                    <option value="3">週に5~7杯</option>
+                    <option value="5">週に8杯以上</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="smoke">
+                  <label for="smoke" class="contenttitle">喫煙量  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">1日の喫煙本数を選択してください</span>
+                  </span></label>
+                  <select id="smoke">
+                    <option value="0">吸わない</option>
+                    <option value="5">1日1~10本</option>
+                    <option value="6">1日11~20本</option>
+                    <option value="7">1日21~30本</option>
+                    <option value="8">1日31本~</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="self-evaluation">
+                  <label for="self-evaluation" class="contenttitle">自己評価  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">普段食べるジャンクフードの数などを参考に5段階評価であなたの生活を評価してください</span>
+                  </span></label>
+                  <select id="self-evaluation">
+                    <option value="8">非常に悪い</option>
+                    <option value="5">悪い</option>
+                    <option value="2">普通</option>
+                    <option value="1">良い</option>
+                    <option value="0">非常に良い</option>
+                  </select>
+                </div>
+              </tr>
+              <div class="buttonsubmit">
+                <button id="sendResult" type="button" class="buttonsubmitcontext">結果を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="./js/title.js" type="module"></script>
