@@ -28,7 +28,104 @@
         <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
         <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
       </div>
-      <div id="start_consult_button"><a href="">終末時間を計算</a></div>
+      <button id="modalOpen" class="button">終末時間を計算</button>
+      <!-- <button id="modalOpen" class="button">モーダルオープン</button> -->
+      <div id="easyModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2># あなたの生活習慣を入力してください</h2>
+            <span class="modalClose">×</span>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <tr>
+                <div class="sleep">
+                  <label for="sleeptime" class="contenttitle">睡眠時間<span class="unit"> (h)</span></label>
+                    <select id="sleeptime">
+                      <option value="0">0</option>
+                      <option value="1">1~2</option>
+                      <option value="2">3~4</option>
+                      <option value="3" selected>5~6</option>
+                      <option value="4">7~8</option>
+                      <option value="5">9~</option>
+                    </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="height">
+                  <label for="height" class="contenttitle">身長<span class="unit"> (cm)</span></label>
+                  <select id="height">
+                    <option value="1">~140</option>
+                    <option value="2">141~150</option>
+                    <option value="3">151~160</option>
+                    <option value="4">161~170</option>
+                    <option value="5" selected>171~180</option>
+                    <option value="6">180~</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="weight">
+                  <label for="weight" class="contenttitle">体重<span class="unit"> (kg)</span></label>
+                  <select id="weight">
+                    <option value="1">~40</option>
+                    <option value="2">41~50</option>
+                    <option value="3" selected>51~60</option>
+                    <option value="4">61~70</option>
+                    <option value="5">71~80</option>
+                    <option value="6">81~90</option>
+                    <option value="7">91~100</option>
+                    <option value="8">101~</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="drink">
+                  <label for="drink" class="contenttitle">飲酒量  <img src="/img/inf.png" alt="question" width="20" height="20"></label>
+                  <select id="drink">
+                    <option value="1">飲酒しない</option>
+                    <option value="2">週に1回</option>
+                    <option value="3">週に2,3回</option>
+                    <option value="4">週に3,4回</option>
+                    <option value="5">毎日</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="smoke">
+                  <label for="smoke" class="contenttitle">喫煙量  <img src="/img/inf.png" alt="question" width="20" height="20"></label>
+                  <select id="smoke">
+                    <option value="1">吸わない</option>
+                    <option value="2">1日1~10本</option>
+                    <option value="3">1日11~20本</option>
+                    <option value="4">1日21~30本</option>
+                    <option value="5">1日31本~</option>
+                  </select>
+                </div>
+              </tr>
+              <tr>
+                <div class="self-evaluation">
+                  <label for="self-evaluation" class="contenttitle">自己評価  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">普段食べるジャンクフードの数などを参考に5段階評価であなたの生活を評価してください</span>
+                  </span></label>
+                  
+                  <select id="self-evaluation">
+                    <option value="1">非常に悪い</option>
+                    <option value="2">悪い</option>
+                    <option value="3">普通</option>
+                    <option value="4">良い</option>
+                    <option value="5">非常に良い</option>
+                  </select>
+                </div>
+              </tr>
+              <div class="buttonsubmit">
+                <button id="sendResult" type="button" class="buttonsubmitcontext">結果を見る</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="./js/title.js" type="module"></script>
