@@ -165,9 +165,9 @@ function rotateTimer(){
 
 // 以下モーダル関係
 
-fetch("./components/inputmodal.html")
-    .then((response) => response.text())
-    .then((data) => document.querySelector("#inputmodal").innerHTML = data);
+//fetch("./components/inputmodal.html")
+  //  .then((response) => response.text())
+    //.then((data) => document.querySelector("#inputmodal").innerHTML = data);
 
 
 const buttonOpen = document.getElementById('modalOpen');

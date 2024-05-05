@@ -6,7 +6,7 @@ body {
     padding : 0;
     background-color: #fff;
 }
-.header {
+#header {
     padding: 10px 4% 10px;
     color: #fff;
     position: sticky;
