@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <!--例:　ヘッダーを読み込ませる-->    
+    <!--例:　ヘッダーを読み込ませる-->
     <div class="header">
       <div id="header_logo"></div>
       <div id="header_title"><a href="#">体内終末時計</a></div>
@@ -23,6 +23,11 @@
 
     <main>
       <div id="result">ようこそ体内終末時計へ</div>
+      <div class="clock_base" style="text-align: center">
+        <img src="./img/clock_base.jpg" id="base" width="40%">
+        <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
+        <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
+      </div>
       <button id="modalOpen" class="button">終末時間を計算</button>
       <!-- <button id="modalOpen" class="button">モーダルオープン</button> -->
       <div id="easyModal" class="modal">
@@ -76,7 +81,10 @@
               </tr>
               <tr>
                 <div class="drink">
-                  <label for="drink" class="contenttitle">飲酒量  <img src="/img/inf.png" alt="question" width="20" height="20"></label>
+                  <label for="drink" class="contenttitle">飲酒量  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">週に何回飲酒するかを選択してください</span>
+                  </span></label>
                   <select id="drink">
                     <option value="1">飲酒しない</option>
                     <option value="2">週に1杯</option>
@@ -88,7 +96,10 @@
               </tr>
               <tr>
                 <div class="smoke">
-                  <label for="smoke" class="contenttitle">喫煙量  <img src="/img/inf.png" alt="question" width="20" height="20"></label>
+                  <label for="smoke" class="contenttitle">喫煙量  <span class="tooltip">
+                    <img src="/img/inf.png" alt="question" width="20" height="20">
+                    <span class="tooltip-text">1日の喫煙本数を選択してください</span>
+                  </span></label>
                   <select id="smoke">
                     <option value="1">吸わない</option>
                     <option value="2">1日1~10本</option>
@@ -104,7 +115,6 @@
                     <img src="/img/inf.png" alt="question" width="20" height="20">
                     <span class="tooltip-text">普段食べるジャンクフードの数などを参考に5段階評価であなたの生活を評価してください</span>
                   </span></label>
-                  
                   <select id="self-evaluation">
                     <option value="1">非常に悪い</option>
                     <option value="2">悪い</option>
