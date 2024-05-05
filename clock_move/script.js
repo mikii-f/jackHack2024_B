@@ -7,6 +7,8 @@ const calc_text = document.getElementById('calc_text');
 const prog_bar = document.getElementsByClassName('prog-bar')[0];
 const bar = document.getElementsByClassName('bar')[0];
 
+
+
 //針の位置をリセット
 function Reset(){
   const options = {
@@ -117,7 +119,7 @@ function getImageRotationAngle(img) {
   const values = transform.split('(')[1].split(')')[0].split(',');
   const a = values[0];
   const b = values[1];
-  const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+  const angle = Math.round(Math.atan2(b, a) * (180/Math.PI) * 100) / 100;   //小数第2位まで求める
   // 角度を返す
   return angle;
 }
@@ -141,25 +143,75 @@ function Calculation(){
   black_in_calc.style.display = 'block';
   virtual_popup.style.display = 'block';
   calc_text.style.display = 'block';
-  if (true){
-    setTimeout(Result_Danger, 3000); //CSSのアニメーション時間と合わせる
+  setTimeout(Result, 3000); //CSSのアニメーションに合わせる
+}
+
+//計算中画面の削除&時計回転開始
+function Result(){
+  Reset();
+  Calc_Stop();
+  black_in_calc.style.display = 'none';
+  virtual_popup.style.display = 'none';
+  calc_text.style.display = 'none';
+}
+
+
+//点数に応じた場所に止まる処理
+function Calc_Stop(){
+  const max_score = 30;
+  const score = 30;
+  const destination = Math.round(1300 * (score/max_score)) / 100; //最大で13.00時間進む
+  const minute = destination - Math.round(13 * (score/max_score)); //分の取得
+  if (destination > 1){   //1時間以上進むなら高速から
+    HighSpeed();
+    const high = setInterval(function(){
+      var temp = getImageRotationAngle(short);
+      if (temp < 0) temp = 360 + temp;       //180~360度がマイナスで表されているため補正
+      if (destination < 12){                 //12時間以内で止まるなら 
+        if (temp >= (destination-0.5) * 30){ //0.5時間前で減速
+          LowSpeed();
+          clearInterval(high);
+        }
+      }
+      else{                                  //12時間以上進むなら
+        if (temp >= 11.5 * 30){              //11時半で減速
+          LowSpeed();
+          clearInterval(high);
+        }
+      }
+    }, 10)  //チェックの間隔を任意に変更
   }
   else{
-    setTimeout(Result_normal, 3000);
+    LowSpeed();
   }
-}
-
-//危機感ページへの遷移を想定
-function Result_Danger(){
-  black_in_calc.style.display = 'none';
-  document.body.style.backgroundColor = '#1e1e1e'; //背景などを変える処理
-  virtual_popup.style.display = 'none';
-  calc_text.style.display = 'none';
-}
-
-//遷移なし
-function Result_normal(){
-  black_in_calc.style.display = 'none';
-  virtual_popup.style.display = 'none';
-  calc_text.style.display = 'none';
+  const low = setInterval(function(){
+    var temp = getImageRotationAngle(short);
+    if (temp < 0) temp = 360 + temp;          //180~360度がマイナスで表されているため補正
+    if (destination < 12){                    //12時間以内で止まるなら
+      if (temp >= destination * 30){        //ぴったりで止まる
+        Stop();
+        clearInterval(low);
+        if (score >= 25){
+          document.body.style.background = '#1e1e1e';   //ここで背景などをヤバい方に切り替える処理
+        }
+      }
+    }
+    else{                             //マイナスに突入するなら
+      if (temp >= 359.5
+      ){               //一旦12時で止まる(精度を上げようとしすぎるとバグの元)
+        Stop();
+        clearInterval(low);
+        setTimeout(function(){        //1秒後に動き出す
+          LowSpeed();
+          const low2 = setInterval(function(){
+            if (getImageRotationAngle(short) > (destination * 30) % 360){
+              Stop();
+              clearInterval(low2);
+              document.body.style.background = '#1e1e1e';   //ここで背景などをヤバい方に切り替える処理
+            }
+          }, 5);  //チェックの間隔を任意に変更
+        },1000);
+      }
+    }
+  }, 5)  //チェックの間隔を任意に変更
 }

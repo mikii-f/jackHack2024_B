@@ -18,13 +18,12 @@ body {
     bottom: 7;
     left: 0;
     margin: auto;
-    
     mix-blend-mode: multiply;
     transform: rotate(0deg);
     border-radius: 50%;
 }
 
-.black_in_calc{
+.black_in_calc {
     display: none;
 	position: fixed; /* ブラウザの定位置に固定 */
 	background: rgba(0, 0, 0, 0.5); /* 背景色を半透明の黒色*/
