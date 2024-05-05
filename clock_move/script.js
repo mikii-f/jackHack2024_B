@@ -152,7 +152,7 @@ function Calculation(){
 //危機感ページへの遷移を想定
 function Result_Danger(){
   black_in_calc.style.display = 'none';
-  document.body.style.backgroundColor = '#222222'; //背景などを変える処理
+  document.body.style.backgroundColor = '#1e1e1e'; //背景などを変える処理
   virtual_popup.style.display = 'none';
   calc_text.style.display = 'none';
 }
