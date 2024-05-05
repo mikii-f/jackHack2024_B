@@ -1,6 +1,6 @@
 // 例: headerファイルをimportするコード
 
-fetch("./components/header.html")
+fetch("../header.html")
     .then((response) => response.text())
     .then((data) => document.querySelector("#header").innerHTML = data);
  
@@ -55,7 +55,7 @@ function LowSpeed(){
     [
         { transform: `rotate(${rotate_short}deg)` }, // 開始時の状態
         { transform: `rotate(${rotate_short+360}deg)` } // 終了時の状態（1回転）
-    ], 
+    ],
     // タイミングに関する設定
     {
         duration: 24000, // 再生時間（24秒）
