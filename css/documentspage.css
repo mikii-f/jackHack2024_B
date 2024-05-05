@@ -1,0 +1,78 @@
+body {
+    margin: 0px;
+    width: 95%;
+}
+.vertical_border1 {
+    border-left:5px solid #000000; /*線の設定*/
+}
+
+.font {
+    font-size: 35px;
+    color: #FF9494;
+}
+
+.discription_context1 {
+    margin: 20px;
+}
+
+.margin1{
+    margin-top: 75px;
+}
+
+.margin2 {
+    margin-top: 35px;
+}
+
+.margin_left1 {
+    margin-left: 5%;
+}
+
+.discription_margin_left{
+    margin-left: 110px;
+}
+
+.vartical_margin{
+    margin-left: 110px;
+    border-left:5px solid #000000;
+    margin: 20px;
+}
+
+#header {
+    padding: 10px 4% 10px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    width: 95%;
+    max-width: 100%;
+    height: 80px;
+    background-color: #ff9494;
+    display: flex;
+    align-items: center;
+}
+
+
+#header_title {
+   margin: 0;
+   padding: 0;
+   font-size: 20px;
+   font-weight: bold;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+}
+li {
+    margin: 0 0 0 30px;
+    font-size: 14px;
+}
+a {	
+    text-decoration: none;
+    color: #fff;
+}
+nav {
+    margin: 0 0 0 auto;
+}
+#doc {
+    text-decoration: underline;
+}

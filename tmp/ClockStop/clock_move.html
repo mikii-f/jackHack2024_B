@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" class="html" id="top">
+    <head>
+        <meta charset="UTF-8">
+        <title>体内終末時計</title>
+        <link rel="stylesheet" href="./stylesheet.css">
+    </head>
+    <body>
+        <h1>体内<span style="color:red;">終末時計</span></h1>
+        <hr color="black">
+        <!--時計画像-->
+        <div class="clock_base" style="text-align: center">
+            <img src="./img/clock_base.jpg" id="base" width="40%">
+            <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
+            <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
+        </div>
+        <div>
+            <p>開始</p>
+            <input type="radio" name="speed" onclick="rotateTimer()">
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
