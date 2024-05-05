@@ -207,7 +207,7 @@ table > * {
 
 /* ホバー時にツールチップの非表示を解除 */
 .tooltip:hover .tooltip-text {
-    opacity: 0.8;
+    opacity: 1;
     visibility: visible;
 }
 .head {
