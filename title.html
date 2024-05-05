@@ -5,17 +5,24 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/title.css">
-    <title>タイトルページ</title>
+    <title>リザルトページ</title>
   </head>
 
   <body>
+
     <!--例:　ヘッダーを読み込ませる-->
     <div id="header"></div>
 
     <main>
-      <p>内容</p>
+      <div id="result">あなたの終末時間はn分です</div>
+      <div class="clock_base" style="text-align: center">
+        <img src="./img/clock_base.jpg" id="base" width="40%">
+        <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
+        <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
+      </div>
+      <button id="modalOpen" class="button">Topへ戻る</button>
     </main>
-
     <script src="./js/title.js" type="module"></script>
+
   </body>
 </html>

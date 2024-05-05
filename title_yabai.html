@@ -1,18 +1,37 @@
-<!--ここに危機感を感じさせたいときのタイトルページを作成してください-->
+<!--ここにタイトルページを作成してください-->
 <!doctype html>
 <html lang="ja">
 
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/title_yabai.css">
-    <title>タイトルページ_危機感</title>
+    <title>ヤバいリザルトページ</title>
   </head>
 
   <body>
+    <!--例:　ヘッダーを読み込ませる-->    
+    <div class="header">
+      <div id="header_logo"></div>
+      <div id="header_title_box"><a href="" id="header_title">体内<span id="title_span">終</span>末時計</a></div>
+      <nav id="header_list">
+        <ul>
+          <li><a href="#" id="top">TOP</a></li>
+          <li><a href="#" id="doc">説明</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <main>
-      <p>内容</p>
+      <div id="result">あなたの終末時間はn分です</div>
+      <div class="clock_base" style="text-align: center">
+        <img src="./img/clock_base_b.jpg" id="base" width="40%">
+        <img src="./img/clock_short_b.jpg" class="clock_hands" id="short" width="40%">
+        <img src="./img/clock_long_b.jpg" class="clock_hands" id="long" width="40%">
+      </div>
+      <div id="return_button_box"><a href="#" id="return_button"><span id="button_span">T</span>OPへ戻る</a></div>
+
     </main>
 
+    <script src="./js/title.js" type="module"></script>
   </body>
 </html>
