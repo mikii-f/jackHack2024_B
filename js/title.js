@@ -185,13 +185,39 @@ function calculate() {
     const drink = document.getElementById("drink").value;
     const smoke = document.getElementById("smoke").value;
     const self_evaluation = document.getElementById("self-evaluation").value;
-    
-    console.log(sleeptime)
-    const result = 100; //TODO: 本来であれば、上記の値を参照して計算を行う。それはお任せします。
+    const BMI_value = BMI(height, weight);
+
+    console.log(Number(sleeptime), Number(drink), Number(smoke), Number(self_evaluation), Number(BMI_value));
+    console.log(Number(weight), Number(height));
+
+    const result = Number(sleeptime) + Number(drink) + Number(smoke) + Number(self_evaluation) + Number(BMI_value); //TODO: 本来であれば、上記の値を参照して計算を行う。それはお任せします。
+    console.log(result);
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
 }
 sendResult.addEventListener('click', calculate);
+
+// BMIを計算する関数
+function BMI(height, weight) {
+    const bmi = weight / (height * height);
+    const roundedBMI = Math.round(bmi); // BMIを整数に丸める
+    console.log(roundedBMI);
+    switch(true) { // 条件部分を修正し、真偽値で比較する
+        case roundedBMI < 18.5:
+            return 3;
+        case (18.5 <= roundedBMI && roundedBMI < 25):
+            return 0;
+        case (25 <= roundedBMI && roundedBMI < 30):
+            return 3;
+        case (30 <= roundedBMI && roundedBMI < 35):
+            return 4;
+        case (35 <= roundedBMI && roundedBMI < 40):
+            return 5;
+        case (40 <= roundedBMI):
+            return 6;
+    }
+}
+
 
 // ボタンがクリックされた時
 buttonOpen.addEventListener('click', modalOpen);
