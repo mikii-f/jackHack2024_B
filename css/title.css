@@ -49,24 +49,18 @@ nav {
     justify-content: center;
     align-items: center;
 }
-#modalOpen {
-    position: absolute;
-    right: 130px;
-    bottom: 70px;
-    height: 60px;
-    width: 210px;
-    border-radius: 10px;
-    background-color: #ff9494;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20;
-    font-weight: bold;
-}
 #main {
     padding:0px;
 }
+#result_time {
+    font-size: 5px;
+    font-weight: bold;
+}
+#result_text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 
 
 .clock_base {

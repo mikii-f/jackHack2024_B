@@ -5,6 +5,26 @@ fetch("../header.html")
     .then((data) => document.querySelector("#header").innerHTML = data);
  
 
+// リザルトの表示 1300 * (score/maxscore) / 100
+function WriteResult(time) {
+    const resultTime = 24 - time * 3;
+    let resultStr = "";
+    if(resultTime >= 1 || resultTime <= -1) {
+        resultStr = "<span class=\"result_time\">" + toString(Math.floor(resultTime)) + "</span> 時間 <span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "<span> 分 "
+    } else {
+        resultStr = "<span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "</span> 分"
+    }
+    console.log(resultStr);
+    document.getElementById('result').innerHTML = `<p id=\"result_text\">あなたの終末時間は ${resultTime}です。</p>`;
+}
+
+window.onload = function(){
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    WriteResult(params.get('result'));
+}
+
+
 //以下時計関係
 
 const base = document.getElementById('base'); //背景

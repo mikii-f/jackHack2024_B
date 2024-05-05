@@ -3,7 +3,26 @@
 fetch("./components/header.html")
     .then((response) => response.text())
     .then((data) => document.querySelector("#header").innerHTML = data);
- 
+
+
+// リザルトの表示
+function WriteResult(time) {
+    resultTime = 24 - time * 3;
+    resultStr = "";
+    if(resultTime >= 1) {
+        resultStr = "<span class=\"result_time\">" + toString(Math.floor(resultTime)) + "</span> 時間 <span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "<span> 分 "
+    } else {
+        resultStr = "<span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "</span> 分"
+    }
+    document.getElementById('result').innerHTML = `<p id=\"result_text\">あなたの終末時間は ${resultTime}です。</p>`;
+}
+
+window.onload = function(){
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    WriteResult(params.get('result'));
+}
+
 
 //以下時計関係
 
