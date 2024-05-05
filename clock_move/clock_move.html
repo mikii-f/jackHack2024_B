@@ -32,8 +32,12 @@
         <p>白</p>
         <input type="radio" name="blackwhite" onclick="White()" checked>
         <div class="black_in_calc"></div>
-        <p id="popup_text">計算中</p>
-        <progress id="popup_bar" max="100" value="0"></progress>
+        <div class="virtual_popup">
+                <p id="calc_text">計算中</p>
+                <div class="prog-bar">
+                    <p class="bar"></p>
+                </div>
+            </div>
         <script src="./script.js"></script>
     </body>
 </html>

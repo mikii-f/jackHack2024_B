@@ -2,8 +2,10 @@ const base = document.getElementById('base'); //背景
 const short = document.getElementById('short'); // 短針
 const long = document.getElementById('long'); // 長針
 const black_in_calc = document.getElementsByClassName('black_in_calc')[0]; //背景を暗くするやつ
-const popup_t = document.getElementById('popup_text');
-const popup_b = document.getElementById('popup_bar');
+const virtual_popup = document.getElementsByClassName('virtual_popup')[0];
+const calc_text = document.getElementById('calc_text');
+const prog_bar = document.getElementsByClassName('prog-bar')[0];
+const bar = document.getElementsByClassName('bar')[0];
 
 //針の位置をリセット
 function Reset(){
@@ -136,30 +138,28 @@ function White(){
 
 //計算中の見た目
 function Calculation(){
-  black_in_calc.style.zIndex = '1';
-  black_in_calc.style.background = 'rgba(0, 0, 0, 0.5)'; //黒背景を前面に
-  popup_t.style.display = 'block';
-  popup_b.style.display = 'block'; //計算中テキストとバーの表示
-  const interval = setInterval(function(){
-    popup_b.value += 0.4;
-    if (popup_b.value >= 100) {
-      if (true){
-        setTimeout(Result_Danger, 400);
-      }
-      else{
-        //結果が悪くなかったときの遷移
-      }
-      clearInterval(interval);
-    }
-  }, 10); //10ミリ秒ごとにバーが0.4%進む(valueが100になってから400ミリ秒経ってから画面遷移)
+  black_in_calc.style.display = 'block';
+  virtual_popup.style.display = 'block';
+  calc_text.style.display = 'block';
+  if (true){
+    setTimeout(Result_Danger, 3000); //CSSのアニメーション時間と合わせる
+  }
+  else{
+    setTimeout(Result_normal, 3000);
+  }
 }
 
 //危機感ページへの遷移を想定
 function Result_Danger(){
-  black_in_calc.style.zIndex = '-1';
-  black_in_calc.style.background = 'rgba(0, 0, 0, 0)';
-  document.body.style.backgroundColor = '#222222';
-  popup_t.style.display = 'none';
-  popup_b.style.display = 'none';
-  popup_b.value = 0;
+  black_in_calc.style.display = 'none';
+  document.body.style.backgroundColor = '#222222'; //背景などを変える処理
+  virtual_popup.style.display = 'none';
+  calc_text.style.display = 'none';
+}
+
+//遷移なし
+function Result_normal(){
+  black_in_calc.style.display = 'none';
+  virtual_popup.style.display = 'none';
+  calc_text.style.display = 'none';
 }
