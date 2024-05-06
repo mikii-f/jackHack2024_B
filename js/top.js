@@ -69,7 +69,7 @@ function LowSpeed(){
     [
         { transform: `rotate(${rotate_long}deg)` }, // 開始時の状態
         { transform: `rotate(${rotate_long+360}deg)` } // 終了時の状態（1回転）
-    ], 
+    ],
     // タイミングに関する設定
     {
         duration: 2000, // 再生時間（2秒）
