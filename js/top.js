@@ -194,7 +194,7 @@ function calculate() {
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
     if (result < 18) {
-        window.location.href = './title.html';
+        let url_string = './title_yabai.html';
     } else {
         window.location.href = './title_yabai.html';
     }
