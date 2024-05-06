@@ -207,6 +207,11 @@ function calculate() {
             window.location.href = './title_yabai.html';
         }
     }, 3000); //CSSのアニメーション時間に合わせる
+    if (result < 18) {
+        window.location.href = `./title.html?result=${result}`;
+    } else {
+        window.location.href = `./title_yabai.html?result=${result}`;
+    }
 }
 sendResult.addEventListener('click', calculate);
 
