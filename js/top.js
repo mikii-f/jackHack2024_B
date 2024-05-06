@@ -202,16 +202,11 @@ function calculate() {
     calc_text.style.display = 'block';
     setTimeout(function(){
         if (result < 18) {
-            window.location.href = './title.html';
+            window.location.href = `./title.html?result=${result}`;
         } else {
-            window.location.href = './title_yabai.html';
+            window.location.href = `./title_yabai.html?result=${result}`;
         }
     }, 3000); //CSSのアニメーション時間に合わせる
-    if (result < 18) {
-        window.location.href = `./title.html?result=${result}`;
-    } else {
-        window.location.href = `./title_yabai.html?result=${result}`;
-    }
 }
 sendResult.addEventListener('click', calculate);
 
