@@ -226,7 +226,7 @@ function Calc_Stop(score){
       if (temp >= destination * 30){        //ぴったりで止まる
         Stop_SelectPoint(destination * 30, minute * 360); //ぴったりの位置に止める
         clearInterval(low);
-        WriteResult(destination);
+        WriteResult(12 - destination);
         //document.body.style.background = '#1e1e1e';   //ここで背景などをヤバい方に切り替える処理
       }
     }
