@@ -193,11 +193,20 @@ function calculate() {
     console.log(result);
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
-    if (result < 18) {
-        let url_string = './title_yabai.html';
-    } else {
-        window.location.href = './title_yabai.html';
-    }
+    //計算中画面表示用
+    const black_in_calc = document.getElementsByClassName('black_in_calc')[0]; //背景を暗くするやつ
+    const virtual_popup = document.getElementsByClassName('virtual_popup')[0]; //文字とバーを表示する部分
+    const calc_text = document.getElementById('calc_text'); //計算中テキスト
+    black_in_calc.style.display = 'block';
+    virtual_popup.style.display = 'block';
+    calc_text.style.display = 'block';
+    setTimeout(function(){
+        if (result < 18) {
+            window.location.href = './title.html';
+        } else {
+            window.location.href = './title_yabai.html';
+        }
+    }, 3000); //CSSのアニメーション時間に合わせる
 }
 sendResult.addEventListener('click', calculate);
 
