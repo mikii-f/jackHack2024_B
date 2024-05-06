@@ -14,7 +14,7 @@ function WriteResult(resultTime) {
     } else {
         resultStr = "<span class=\"result_time\">" + String(Math.round((resultTime%1) * 60)) + "</span> 分"
     }
-    document.getElementById('result').innerHTML = `<p id=\"result_text\">あなたの体内終末まで ${resultStr}です。</p>`;
+    document.getElementById('result_text').innerHTML = `あなたの体内終末まで ${resultStr}です。`;
 }
 
 window.onload = function(){
