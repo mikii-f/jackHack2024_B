@@ -1,181 +1,252 @@
-// 例: headerファイルをimportするコード
-
-fetch("./components/header.html")
-    .then((response) => response.text())
-    .then((data) => document.querySelector("#header").innerHTML = data);
-
-
 // リザルトの表示
-function WriteResult(time) {
-    resultTime = 24 - time * 3;
-    resultStr = "";
-    if(resultTime >= 1) {
-        resultStr = "<span class=\"result_time\">" + toString(Math.floor(resultTime)) + "</span> 時間 <span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "<span> 分 "
+const max_score = 39;
+function WriteResult(resultTime) {
+    let resultStr = "";
+    if(resultTime >= 1 || resultTime <= -1) {
+        resultStr = "<span class=\"result_time\">" + String(Math.floor(resultTime)) + "</span> 時間 <span class=\"result_time\">" + String(Math.round((resultTime%1) * 60)) + "</span> 分 "
     } else {
-        resultStr = "<span class=\"result_time\">" + toString(Math.floor((resultTime%1) * 60)) + "</span> 分"
+        resultStr = "<span class=\"result_time\">" + String(Math.round((resultTime%1) * 60)) + "</span> 分"
     }
-    document.getElementById('result').innerHTML = `<p id=\"result_text\">あなたの終末時間は ${resultTime}です。</p>`;
+    document.getElementById('result').innerHTML = `<p id=\"result_text\">あなたの体内<span class=\"result_time\">終末</span>まで あと ${resultStr}です。</p>`;
 }
 
 window.onload = function(){
     const url = new URL(window.location.href);
     const params = url.searchParams;
-    WriteResult(params.get('result'));
+    Calc_Stop(params.get('result'));
 }
 
 
 //以下時計関係
-
 const base = document.getElementById('base'); //背景
 const short = document.getElementById('short'); // 短針
 const long = document.getElementById('long'); // 長針
 
+//アニメーション格納用
+var short_move = short.animate(
+  [
+    { transform: `rotate(0deg)` },
+    { transform: `rotate(0deg)` }
+  ], 
+  {
+    duration: 1,
+    iterations: Infinity,
+  },
+);
+var long_move = long.animate(
+  [
+    { transform: `rotate(0deg)` },
+    { transform: `rotate(0deg)` }
+  ], 
+  {
+    duration: 1,
+    iterations: Infinity,
+  },
+);
+
 //針の位置をリセット
 function Reset(){
-    const options = {
-    duration: 10,
-    iterations: Infinity,
-    }
-    const keyframes = [
-    {transform: 'rotate(0deg)'},
-    {transform: 'rotate(0deg)'}
-    ]
-    short.animate(keyframes, options);
-    long.animate(keyframes, options);
+  short_move = short.animate(
+    [
+      { transform: `rotate(0deg)` },
+      { transform: `rotate(0deg)` }
+    ], 
+    {
+      duration: 1,
+      iterations: Infinity,
+    },
+  );
+  long_move = long.animate(
+    [
+      { transform: `rotate(0deg)` },
+      { transform: `rotate(0deg)` }
+    ], 
+    {
+      duration: 1,
+      iterations: Infinity,
+    },
+  );
 }
 
 //位置を保持してストップ
 function Stop(){
-    const rotate_short = getImageRotationAngle(short);
-    const rotate_long = getImageRotationAngle(long);
-    const options = {
-    duration: 10,
-    iterations: Infinity,
-    }
-    const keyframes1 = [
-    {transform: `rotate(${rotate_short}deg)`},
-    {transform: `rotate(${rotate_short}deg)`}
-    ]
-    const keyframes2 = [
-    {transform: `rotate(${rotate_long}deg)`},
-    {transform: `rotate(${rotate_long}deg)`}
-    ]
-    short.animate(keyframes1, options);
-    long.animate(keyframes2, options);
+  short_move.pause();
+  long_move.pause();
+}
+
+//任意位置でストップ
+function Stop_SelectPoint(short_angle, long_angle){
+  short_move = short.animate(
+    [
+      { transform: `rotate(${short_angle}deg)` },
+      { transform: `rotate(${short_angle}deg)` }
+    ], 
+    {
+      duration: 1,
+      iterations: Infinity,
+    },
+  );
+  long_move = long.animate(
+    [
+      { transform: `rotate(${long_angle}deg)` },
+      { transform: `rotate(${long_angle}deg)` }
+    ], 
+    {
+      duration: 1,
+      iterations: Infinity,
+    },
+  );
 }
 
 //低速回転
 function LowSpeed(){
-    const rotate_short = getImageRotationAngle(short);
-    const rotate_long = getImageRotationAngle(long);
-    // 画像を時計回りに1回転させる
-    short.animate(
+  short_move = short.animate(
     // アニメーションの初めと終わりを表す配列
     [
-        { transform: `rotate(${rotate_short}deg)` }, // 開始時の状態
-        { transform: `rotate(${rotate_short+360}deg)` } // 終了時の状態（1回転）
+      { transform: `rotate(${getImageRotationAngle(short)}deg)` }, // 開始時の状態
+      { transform: `rotate(${getImageRotationAngle(short)+360}deg)` } // 終了時の状態（1回転）
     ], 
     // タイミングに関する設定
     {
-        duration: 24000, // 再生時間（24秒）
-        iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
+      duration: 60000, // 再生時間（60秒）
+      iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
-    );
-
-    // 画像を時計回りに1回転させる
-    long.animate(
+  );
+  long_move = long.animate(
     // アニメーションの初めと終わりを表す配列
     [
-        { transform: `rotate(${rotate_long}deg)` }, // 開始時の状態
-        { transform: `rotate(${rotate_long+360}deg)` } // 終了時の状態（1回転）
+      { transform: `rotate(${getImageRotationAngle(long)}deg)` }, // 開始時の状態
+      { transform: `rotate(${getImageRotationAngle(long)+360}deg)` } // 終了時の状態（1回転）
     ], 
     // タイミングに関する設定
     {
-        duration: 2000, // 再生時間（2秒）
-        iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
+      duration: 5000, // 再生時間（5秒）
+      iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
-    );
+  );
 }
 
 //高速回転
 function HighSpeed(){
-    const rotate_short = getImageRotationAngle(short);
-    const rotate_long = getImageRotationAngle(long);
-    // 画像を時計回りに1回転させる
-    short.animate(
+  short_move = short.animate(
     // アニメーションの初めと終わりを表す配列
     [
-        { transform: `rotate(${rotate_short}deg)` }, // 開始時の状態
-        { transform: `rotate(${rotate_short+360}deg)` } // 終了時の状態（1回転）
+      { transform: `rotate(${getImageRotationAngle(short)}deg)` }, // 開始時の状態
+      { transform: `rotate(${getImageRotationAngle(short)+360}deg)` } // 終了時の状態（1回転）
     ], 
     // タイミングに関する設定
     {
-        duration: 3600, // 再生時間（6秒）
-        iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
+      duration: 6000, // 再生時間（6秒）
+      iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
-    );
-
-    // 画像を時計回りに1回転させる
-    long.animate(
+  );
+  long_move = long.animate(
     // アニメーションの初めと終わりを表す配列
     [
-        { transform: `rotate(${rotate_long}deg)` }, // 開始時の状態
-        { transform: `rotate(${rotate_long+360}deg)` } // 終了時の状態（1回転）
+      { transform: `rotate(${getImageRotationAngle(long)}deg)` }, // 開始時の状態
+      { transform: `rotate(${getImageRotationAngle(long)+360}deg)` } // 終了時の状態（1回転）
     ], 
     // タイミングに関する設定
     {
-        duration: 300, // 再生時間（0.5秒）
-        iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
+      duration: 500, // 再生時間（0.5秒）
+      iterations: Infinity,  // アニメーションの繰り返し回数（ずっと繰り返す）
     },
-    );
+  );
 }
 
 // 画像の回転角度を取得する関数
 function getImageRotationAngle(img) {
-    // 画像のスタイルを取得
-    const style = window.getComputedStyle(img);
-    // transformプロパティを取得
-    const transform = style.getPropertyValue('transform');
-    // transformプロパティから回転角度を解析
-    const values = transform.split('(')[1].split(')')[0].split(',');
-    const a = values[0];
-    const b = values[1];
-    const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
-    // 角度を返す
-    return angle;
+  // 画像のスタイルを取得
+  const style = window.getComputedStyle(img);
+  // transformプロパティを取得
+  const transform = style.getPropertyValue('transform');
+  // transformプロパティから回転角度を解析
+  const values = transform.split('(')[1].split(')')[0].split(',');
+  const a = values[0];
+  const b = values[1];
+  const angle = Math.round(Math.atan2(b, a) * (180/Math.PI) * 100) / 100;   //小数第2位まで求める
+  // 角度を返す
+  return angle;
 }
 
 //色を黒に変更
 function Black(){
-    base.src = './img/clock_base_b.jpg';
-    short.src = './img/clock_short_b.jpg';
-    long.src = './img/clock_long_b.jpg';
+  base.src = 'clock_base2.jpg';
+  short.src = 'clock_short2.jpg';
+  long.src = 'clock_long2.jpg';
 }
 
 //色を白に変更
 function White(){
-    base.src = './img/clock_base.jpg';
-    short.src = './img/clock_short.jpg';
-    long.src = './img/clock_long.jpg';
+  base.src = 'clock_base.jpg';
+  short.src = 'clock_short.jpg';
+  long.src = 'clock_long.jpg';
+}
+
+//計算中画面の削除&時計回転開始
+function Result(){
+  Reset();
+  Calc_Stop();
+  black_in_calc.style.display = 'none';
+  virtual_popup.style.display = 'none';
+  calc_text.style.display = 'none';
 }
 
 
-function calculateTime(time){
-    // const slow_time = (2880 - time*120)/1880
-    const fast_time_h = (20/17)*time - (100/34)
-    const fast_time = fast_time_h * 300
-    return fast_time
-}
-
-function rotateTimer(){
-    const hours = 12; //TODO: 本来はクエリパラメータから取得する
-    const fast_time = calculateTime(hours);
-    console.log(fast_time)
+//点数に応じた場所に止まる処理
+function Calc_Stop(score){
+  const destination = Math.round(1300 * (score/max_score)) / 100; //最大で13.00時間進む
+  const minute = destination % 1; //分の取得
+  if (destination > 1){   //1時間以上進むなら高速から
     HighSpeed();
-    setTimeout(() => {
-    LowSpeed()
-    }, fast_time);
-    setTimeout(() => {
-    Stop()
-    }, 5000);
+    const high = setInterval(function(){
+      var temp = getImageRotationAngle(short);
+      if (temp < 0) temp = 360 + temp;       //180~360度がマイナスで表されているため補正
+      if (destination < 12){                 //12時間以内で止まるなら 
+        if (temp >= (destination-0.5) * 30){ //0.5時間前で減速
+          LowSpeed();
+          clearInterval(high);
+        }
+      }
+      else{                                  //12時間以上進むなら
+        if (temp >= 11.5 * 30){              //11時半で減速
+          LowSpeed();
+          clearInterval(high);
+        }
+      }
+    }, 10)  //チェックの間隔を任意に変更
+  }
+  else{
+    LowSpeed();
+  }
+  const low = setInterval(function(){
+    var temp = getImageRotationAngle(short);
+    if (temp < 0) temp = 360 + temp;          //180~360度がマイナスで表されているため補正
+    if (destination < 12){                    //12時間以内で止まるなら
+      if (temp >= destination * 30){        //ぴったりで止まる
+        Stop_SelectPoint(destination * 30, minute * 360); //ぴったりの位置に止める
+        clearInterval(low);
+        WriteResult(12 - destination);
+        //document.body.style.background = '#1e1e1e';   //ここで背景などをヤバい方に切り替える処理
+      }
+    }
+    else{                             //マイナスに突入するなら
+      if (temp >= 359.5
+      ){               //一旦12時で止まる(精度を上げようとしすぎるとバグの元)
+        Stop_SelectPoint(0, 0);
+        clearInterval(low);
+        setTimeout(function(){        //1秒後に動き出す
+          LowSpeed();
+          const low2 = setInterval(function(){
+            if (getImageRotationAngle(short) > (destination * 30) % 360){
+              Stop_SelectPoint((destination * 30) % 360, minute * 360);
+              clearInterval(low2);
+              WriteResult(12 - destination);
+              //document.body.style.background = '#1e1e1e';   //ここで背景などをヤバい方に切り替える処理
+            }
+          }, 5);  //チェックの間隔を任意に変更
+        },1000);
+      }
+    }
+  }, 5)  //チェックの間隔を任意に変更
 }

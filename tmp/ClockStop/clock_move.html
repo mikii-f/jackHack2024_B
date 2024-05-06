@@ -14,10 +14,30 @@
             <img src="./img/clock_short.jpg" class="clock_hands" id="short" width="40%">
             <img src="./img/clock_long.jpg" class="clock_hands" id="long" width="40%">
         </div>
+        <button onclick="Calculation()">結果を見る!</button>
         <div>
-            <p>開始</p>
-            <input type="radio" name="speed" onclick="rotateTimer()">
+            <p>速度</p>
+            <p>速い</p>
+            <input type="radio" name="speed" onclick="HighSpeed()">
+            <p>遅い</p>
+            <input type="radio" name="speed" onclick="LowSpeed()">
+            <p>ストップ</p>
+            <input type="radio" name="speed" onclick="Stop()">
+            <p>リセット</p>
+            <input type="radio" name="speed" onclick="Reset()" checked>
         </div>
+        <p>色</p>
+        <p>黒</p>
+        <input type="radio" name="blackwhite" onclick="Black()">
+        <p>白</p>
+        <input type="radio" name="blackwhite" onclick="White()" checked>
+        <div class="black_in_calc"></div>
+        <div class="virtual_popup">
+                <p id="calc_text">計算中</p>
+                <div class="prog-bar">
+                    <p class="bar"></p>
+                </div>
+            </div>
         <script src="./script.js"></script>
     </body>
 </html>

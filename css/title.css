@@ -44,7 +44,7 @@ nav {
 }
 #result {
     position: relative;
-    top: 30px;
+    top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,20 +52,37 @@ nav {
 #main {
     padding:0px;
 }
-#result_time {
-    font-size: 5px;
+.result_time {
+    font-size: 30px;
     font-weight: bold;
+    color: #ff9494;
+    text-shadow: 1px 0 0 #e08080, -1px 0 0 #e08080, 0 1px 0 #e08080, 0 -1px 0 #e08080;
 }
 #result_text {
-    font-size: 30px;
+    font-size: 23px;
+    font-weight: bold;
+}
+#modalOpen {
+    position: absolute;
+    right: 130px;
+    bottom: 70px;
+    height: 60px;
+    width: 210px;
+    border-radius: 10px;
+    background-color: #ff9494;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20;
     font-weight: bold;
 }
 
 
 
 .clock_base {
-    position: relative;
-    top: 60px;
+    position: absolute;
+    top: 200px;
     transform: rotate(0deg);
 }
 
@@ -73,7 +90,7 @@ nav {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 5pt;
+    bottom: 7pt;
     left: 0;
     margin: auto;
     mix-blend-mode: multiply;
