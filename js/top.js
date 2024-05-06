@@ -201,7 +201,7 @@ function calculate() {
     virtual_popup.style.display = 'block';
     calc_text.style.display = 'block';
     setTimeout(function(){
-        if (result < 18) {
+        if (result < 24) {
             window.location.href = `./title.html?result=${result}`;
         } else {
             window.location.href = `./title_yabai.html?result=${result}`;
@@ -217,17 +217,17 @@ function BMI(height, weight) {
     console.log(roundedBMI);
     switch(true) { // 条件部分を修正し、真偽値で比較する
         case roundedBMI < 18.5:
-            return 3;
+            return 7;
         case (18.5 <= roundedBMI && roundedBMI < 25):
             return 0;
         case (25 <= roundedBMI && roundedBMI < 30):
-            return 3;
+            return 7;
         case (30 <= roundedBMI && roundedBMI < 35):
-            return 4;
+            return 8;
         case (35 <= roundedBMI && roundedBMI < 40):
-            return 5;
+            return 9;
         case (40 <= roundedBMI):
-            return 6;
+            return 10;
     }
 }
 
