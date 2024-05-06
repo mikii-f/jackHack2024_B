@@ -8,6 +8,7 @@ body {
     z-index: 0;
 }
 #header {
+    z-index: 1;
     padding: 10px 4% 10px;
     color: #fff;
     position: sticky;

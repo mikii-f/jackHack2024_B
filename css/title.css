@@ -7,6 +7,7 @@ body {
     background-color: #fff;
 }
 #header {
+    z-index: 1;
     padding: 10px 4% 10px;
     color: #fff;
     position: sticky;
@@ -43,11 +44,11 @@ nav {
     text-decoration: underline;
 }
 #result {
-    position: relative;
-    top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    font-size: 23px;
 }
 #main {
     padding:0px;
@@ -59,6 +60,9 @@ nav {
     text-shadow: 1px 0 0 #e08080, -1px 0 0 #e08080, 0 1px 0 #e08080, 0 -1px 0 #e08080;
 }
 #result_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 23px;
     font-weight: bold;
 }
@@ -81,8 +85,8 @@ nav {
 
 
 .clock_base {
-    position: absolute;
-    top: 200px;
+    position: relative;
+    top: 20px;
     transform: rotate(0deg);
 }
 
