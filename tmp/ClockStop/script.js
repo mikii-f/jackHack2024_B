@@ -1,11 +1,6 @@
 const base = document.getElementById('base'); //背景
 const short = document.getElementById('short'); // 短針
 const long = document.getElementById('long'); // 長針
-const black_in_calc = document.getElementsByClassName('black_in_calc')[0]; //背景を暗くするやつ
-const virtual_popup = document.getElementsByClassName('virtual_popup')[0]; //文字とバーを表示する部分
-const calc_text = document.getElementById('calc_text'); //計算中テキスト
-const prog_bar = document.getElementsByClassName('prog-bar')[0]; //バー
-const bar = document.getElementsByClassName('bar')[0]; //バーの動く部分
 
 //アニメーション格納用
 var short_move = short.animate(
@@ -168,14 +163,6 @@ function White(){
   long.src = 'clock_long.jpg';
 }
 
-//計算中の見た目
-function Calculation(){
-  black_in_calc.style.display = 'block';
-  virtual_popup.style.display = 'block';
-  calc_text.style.display = 'block';
-  setTimeout(Result, 3000); //CSSのアニメーションに合わせる
-}
-
 //計算中画面の削除&時計回転開始
 function Result(){
   Reset();
@@ -188,10 +175,10 @@ function Result(){
 
 //点数に応じた場所に止まる処理
 function Calc_Stop(){
-  const max_score = 30;
+  const max_score = 39;
   const score = 25;
   const destination = Math.round(1300 * (score/max_score)) / 100; //最大で13.00時間進む
-  const minute = destination - Math.round(13 * (score/max_score)); //分の取得
+  const minute = destination % 1; //分の取得
   if (destination > 1){   //1時間以上進むなら高速から
     HighSpeed();
     const high = setInterval(function(){
@@ -244,4 +231,19 @@ function Calc_Stop(){
       }
     }
   }, 5)  //チェックの間隔を任意に変更
+}
+
+
+const black_in_calc = document.getElementsByClassName('black_in_calc')[0]; //背景を暗くするやつ
+const virtual_popup = document.getElementsByClassName('virtual_popup')[0]; //文字とバーを表示する部分
+const calc_text = document.getElementById('calc_text'); //計算中テキスト
+const prog_bar = document.getElementsByClassName('prog-bar')[0]; //バー
+const bar = document.getElementsByClassName('bar')[0]; //バーの動く部分
+
+//計算中の見た目
+function Calculation(){
+  black_in_calc.style.display = 'block';
+  virtual_popup.style.display = 'block';
+  calc_text.style.display = 'block';
+  //setTimeout(Result, 3000); //CSSのアニメーションに合わせる
 }
