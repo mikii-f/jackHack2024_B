@@ -238,7 +238,9 @@ function Calc_Stop(score){
         setTimeout(function(){        //1秒後に動き出す
           LowSpeed();
           const low2 = setInterval(function(){
-            if (getImageRotationAngle(short) > (destination * 30) % 360){
+            var temp = getImageRotationAngle(short);
+            if (temp < 0) temp = 360 + temp;          //180~360度がマイナスで表されているため補正
+            if (temp > (destination * 30) % 360){
               Stop_SelectPoint((destination * 30) % 360, minute * 360);
               clearInterval(low2);
               WriteResult(12 - destination);
