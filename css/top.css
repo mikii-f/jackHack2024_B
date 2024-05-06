@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding : 0;
     background-color: #fff;
+    z-index: 0;
 }
 #header {
     padding: 10px 4% 10px;
@@ -357,4 +358,58 @@ option{
 .buttonsubmitcontext {
     font-size: medium;
     font-weight: 300;
+}
+
+/*計算中用ここから*/
+.black_in_calc {
+    display: none;
+	position: fixed; /* ブラウザの定位置に固定 */
+	background: rgba(0, 0, 0, 0.5); /* 背景色を半透明の黒色*/
+	width: 100%; /* 要素の横幅を画面全体に */
+	height: 100%; /* 要素の高さを画面全体に */
+	top: 0; /* 要素の固定位置をブラウザ最上部に合わせる */
+	left: 0; /* 要素の固定位置をブラウザ左側に合わせる */
+	z-index: 2; /*ページの前面*/
+}
+
+.virtual_popup{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 60%;
+    top: 20%;
+    left: 0;
+    z-index: 3;
+}
+/*「計算中」テキスト*/
+#calc_text{
+    position: relative;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*プログレスバー*/
+.prog-bar{
+    width: 80%;
+    height: 10px;
+    background: white;
+	position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+.prog-bar .bar{
+    height: 100%;
+    background: #ff9494;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*right: 0; これを付けると真ん中から広がる感じになる*/
+    margin: auto;
+    animation: progress 3s normal;
+}
+@keyframes progress{
+    0% {width: 0}
+    100% {width: 100%}
 }
