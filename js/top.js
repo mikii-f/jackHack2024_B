@@ -252,6 +252,8 @@ function outsideClose(e) {
     }
 }
 
+LowSpeed();
+
 // When the browser is ready...
 $(function() {
     // validate
