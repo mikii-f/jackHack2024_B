@@ -194,9 +194,9 @@ function calculate() {
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
     if (result < 18) {
-        let url_string = './title_yabai.html';
+        window.location.href = `./title.html?result=${result}`;
     } else {
-        window.location.href = './title_yabai.html';
+        window.location.href = `./title_yabai.html?result=${result}`;
     }
 }
 sendResult.addEventListener('click', calculate);
