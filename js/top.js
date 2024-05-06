@@ -189,10 +189,15 @@ function calculate() {
     console.log(Number(sleeptime), Number(drink), Number(smoke), Number(self_evaluation), Number(BMI_value));
     console.log(Number(weight), Number(height));
 
-    const result = Number(sleeptime) + Number(drink) + Number(smoke) + Number(self_evaluation) + Number(BMI_value); //TODO: 本来であれば、上記の値を参照して計算を行う。それはお任せします。
+    const result = Number(sleeptime) + Number(drink) + Number(smoke) + Number(self_evaluation) + Number(BMI_value);
     console.log(result);
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
+    if (result < 18) {
+        window.location.href = './title.html';
+    } else {
+        window.location.href = './title_yabai.html';
+    }
 }
 sendResult.addEventListener('click', calculate);
 
